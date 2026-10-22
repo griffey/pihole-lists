@@ -1,0 +1,55 @@
+# GriffeyNet privacy blocklist
+# https://raw.githubusercontent.com/griffey/pihole-lists/main/griffeynet-privacy.txt
+# Telemetry and dead-cloud traffic that gets past the general-purpose blocklists.
+# Every entry is something the device does not need in order to work.
+# Format: Pi-hole v6 adlist. ||domain^ blocks the domain and all subdomains; a bare domain blocks only that name.
+
+# ---------------------------------------------------------------
+# Belkin Wemo: cloud shut down 2026-01-31. HomeKit control is local and unaffected.
+# By far the noisiest traffic on the network.
+# ---------------------------------------------------------------
+||wemo2.com^
+||xbcs.net^
+||lswf.net^
+||xwemo.com^
+a38uzlrxc8a6s4-ats.iot.us-east-1.amazonaws.com
+# Same lookups with the local search domain appended (the plugs retry with .lan)
+||wemo2.com.lan^
+||xbcs.net.lan^
+||lswf.net.lan^
+||xwemo.com.lan^
+
+# ---------------------------------------------------------------
+# Kwikset Kevo: app and cloud shut down 2025-11-14. Physical key and fob still work.
+# ---------------------------------------------------------------
+||unikey.com^
+resi-prd-gs-tm.trafficmanager.net
+resi-prd-a-alt-lgcy-ingress.eastus.cloudapp.azure.com
+resi-prd-b-alt-lgcy-ingress.eastus.cloudapp.azure.com
+
+# ---------------------------------------------------------------
+# Ubiquiti UniFi: client fingerprinting experiment and crash reports.
+# Firmware updates, remote access, IPS signatures and connectivity checks are NOT blocked.
+# ---------------------------------------------------------------
+fprint-ml-poc.dev.svc.ui.com
+crash-report-service.svc.ui.com
+
+# ---------------------------------------------------------------
+# Philips Hue bridge: diagnostics upload. Cloud control and firmware are NOT blocked.
+# ---------------------------------------------------------------
+diagnostics.meethue.com
+diag.meethue.com
+
+# ---------------------------------------------------------------
+# Apple usage analytics. iCloud, Siri, updates, App Store and push are NOT blocked.
+# ---------------------------------------------------------------
+metrics.icloud.com
+metrics-config.icloud.com
+metricsedge-continent-wrr.v.aaplimg.com
+notes-analytics-events.apple.com
+shazam-events.cdn-apple.com
+
+# ---------------------------------------------------------------
+# Bambu Studio: crash/error reporting. Printing and cloud features are NOT blocked.
+# ---------------------------------------------------------------
+sentry.bambu-lab.com
